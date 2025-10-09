@@ -5,11 +5,7 @@ if __name__ == '__main__':
 
     n = int(input('Cuántos datos? '))
 
-    L = []
-    for i in range(n):
-        print(f'L {L} con {len(L)} dato(s).')
-        cadena = input(f'Ingresa cadena {i} ')
-        L.append(cadena)
+    L = [input(f'Ingresa cadena {i} ') for i in range(n)]
     
     print()
     print(f'L {L} con {len(L)} dato(s).')
