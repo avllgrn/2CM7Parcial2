@@ -8,19 +8,16 @@ if __name__ == '__main__':
     listaStr = ['uno', 'dos', 'tres', 'cuatro', 'cinco']
     
     print(f'   listaInt = {listaInt}')
-    nInt = len(listaInt)
-    for posicion in range(nInt):
-        print(f'listaInt[{posicion}] = {listaInt[posicion]}')
+    for dato in listaInt:
+        print(f'{dato}')
     print()
 
     print(f'   listaFloat = {listaFloat}')
-    nFloat = len(listaFloat)
-    for posicion in range(nFloat):
-        print(f'listaFloat[{posicion}] = {listaFloat[posicion]}')
+    for dato in listaFloat:
+        print(f'{dato}')
     print()
 
     print(f'   listaStr = {listaStr}')
-    nStr = len(listaStr)
-    for posicion in range(nStr):
-        print(f'listaStr[{posicion}] = {listaStr[posicion]}')
+    for dato in listaStr:
+        print(f'{dato}')
     print()
