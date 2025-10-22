@@ -9,24 +9,18 @@ if __name__ == '__main__':
     
     print(f'   listaInt = {listaInt}')
     nInt = len(listaInt)
-    posicion=0
-    while posicion<nInt:
+    for posicion in range(nInt):
         print(f'listaInt[{posicion}] = {listaInt[posicion]}')
-        posicion += 1
     print()
 
     print(f'   listaFloat = {listaFloat}')
     nFloat = len(listaFloat)
-    posicion=0
-    while posicion<nFloat:
+    for posicion in range(nFloat):
         print(f'listaFloat[{posicion}] = {listaFloat[posicion]}')
-        posicion += 1
     print()
 
     print(f'   listaStr = {listaStr}')
     nStr = len(listaStr)
-    posicion=0
-    while posicion<nStr:
+    for posicion in range(nStr):
         print(f'listaStr[{posicion}] = {listaStr[posicion]}')
-        posicion += 1
     print()
