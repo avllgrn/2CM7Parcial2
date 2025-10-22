@@ -1,9 +1,15 @@
 from os import system
+from random import randrange
 
-def generaListaInput(n):
+def generaListaRandrage(n, ini, fin):
     lista = []   # lista vacia
+    if ini>fin:
+        aux = ini
+        ini=fin
+        fin=aux
+
     for i in range(n):
-        valor = float(input(f'Ingresa [{i}] '))
+        valor = randrange(ini, fin)
         lista.append( valor )
     return lista
 
@@ -16,9 +22,10 @@ if __name__ == '__main__':
     system('cls')
 
     n = int(input('¿Cuántos datos? '))
-    print()
+    ini = int(input('Ingresa inicio de rango '))
+    fin = int(input('Ingresa fin de rango '))
 
-    lista = generaListaInput(n)
+    lista = generaListaRandrage(n, ini, fin)
     print()
 
     print(f'lista = {lista}')
