@@ -9,12 +9,34 @@ def muestraMatriz(M):
             print(M[i][j], end='\t')
         print()
 
-def generaInicializada(m, n):
+def generaConNumeroDeFila(m, n):
     M = []
     for i in range(m):
         renglon = []
         for j in range(n):
-            renglon.append(0)
+            renglon.append(i)
+        M.append(renglon)
+        # print(M)
+    return M
+
+def generaConNumeroDeColumna(m, n):
+    M = []
+    for i in range(m):
+        renglon = []
+        for j in range(n):
+            renglon.append(j)
+        M.append(renglon)
+        # print(M)
+    return M
+
+def generaConContador(m, n):
+    M = []
+    contador = 0
+    for i in range(m):
+        renglon = []
+        for j in range(n):
+            renglon.append( contador )
+            contador += 1
         M.append(renglon)
         # print(M)
     return M
@@ -25,8 +47,18 @@ if __name__ == '__main__':
     m = int(input('¿Cuántas filas? '))
     n = int(input('¿Cuántas columnas? '))
 
-    M = generaInicializada(m, n)
+    MFila = generaConNumeroDeFila(m, n)
+    MColumna = generaConNumeroDeColumna(m, n)
+    MContador = generaConContador(m, n)
 
-    print('\nM')
-    muestraMatriz(M)
+    print('\nMFila')
+    muestraMatriz(MFila)
+    print()
+
+    print('\nMColumna')
+    muestraMatriz(MColumna)
+    print()
+
+    print('\nMContador')
+    muestraMatriz(MContador)
     print()
