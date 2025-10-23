@@ -1,7 +1,7 @@
 from os import system
 
-def generaListaCeros(n):
-    lista = [0 for i in range(n)]
+def generaListaInput(n):
+    lista = [float(input(f'Ingresa [{i}] ')) for i in range(n)]
     return lista
 
 def muestraLista(L):
@@ -14,8 +14,8 @@ if __name__ == '__main__':
 
     n = int(input('¿Cuántos datos? '))
 
-    ceros = generaListaCeros(n)
+    lista = generaListaInput(n)
 
-    print(f'ceros = {ceros}')
-    muestraLista(ceros)
+    print(f'lista = {lista}')
+    muestraLista(lista)
     print()
