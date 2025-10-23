@@ -1,4 +1,5 @@
 from os import system
+from random import randrange
 
 def muestraMatriz(M):
     m = len(M)
@@ -9,15 +10,22 @@ def muestraMatriz(M):
             print(M[i][j], end='\t')
         print()
 
-def generaConInput(m, n):
+def generaConRandrange(m, n, ini, fin):
     M = []
+
+    if ini>fin:
+        aux = ini
+        ini=fin
+        fin=aux
+
     for i in range(m):
         renglon = []
         for j in range(n):
-            valor = float(input(f'Ingresa [{i}][{j}] '))
+            valor = randrange(ini, fin)
             renglon.append( valor )
         M.append(renglon)
         # print(M)
+
     return M
 
 if __name__ == '__main__':
@@ -25,8 +33,10 @@ if __name__ == '__main__':
 
     m = int(input('¿Cuántas filas? '))
     n = int(input('¿Cuántas columnas? '))
+    ini = int(input('Ingresa inicio de rango '))
+    fin = int(input('Ingresa fin de rango '))
 
-    Minput = generaConInput(m, n)
+    Minput = generaConRandrange(m, n, ini, fin)
 
     print('\np')
     muestraMatriz(Minput)
