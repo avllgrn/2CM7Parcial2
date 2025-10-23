@@ -38,28 +38,19 @@ def generaConRandrange(m, n, ini, fin):
 
     return M
 
-def suma(A, B):
-    if len(A)==len(B) and len(A[0])==len(B[0]):
+def multiplica(A, B):
+    # A (m x n) B (n x ele) = C (m x ele)
+
+    if len(A[0])==len(B): # La restriccion es que número de columnas de A DEBE ser número de filas de B
         m = len(A)
-        n = len(B[0])
+        n = len(A[0])
+        ele = len(B[0])
 
-        C = generaInicializada(m, n)
+        C = generaInicializada(m, ele)  # Y resulta una matriz de m x ele
         for i in range(m):
-            for j in range(n):
-                C[i][j] = A[i][j]+B[i][j]
-        return C
-    else:
-        return [[]]
-
-def resta(A, B):
-    if len(A)==len(B) and len(A[0])==len(B[0]):
-        m = len(A)
-        n = len(B[0])
-
-        C = generaInicializada(m, n)
-        for i in range(m):
-            for j in range(n):
-                C[i][j] = A[i][j]-B[i][j]
+            for j in range(ele):
+                for k in range(n):
+                    C[i][j] = C[i][j] + A[i][k] * B[k][j]
         return C
     else:
         return [[]]
@@ -74,14 +65,13 @@ if __name__ == '__main__':
     mB = int(input('¿Cuántas filas? '))
     nB = int(input('¿Cuántas columnas? '))
 
-    if mA!=mB or nA!=nB:
-        print('Error! No pueden sumarse ni restarse')
+    if nA!=mB:
+        print('Error! No pueden multiplicarse')
     else:
 
         A = generaConRandrange(mA, nA, 0, 11)
         B = generaConRandrange(mB, nB, 0, 11)
-        C = suma(A, B)
-        D = resta(A, B)
+        C = multiplica(A, B)
 
         print('\nA')
         muestraMatriz(A)
@@ -91,10 +81,6 @@ if __name__ == '__main__':
         muestraMatriz(B)
         print()
 
-        print('\nA+B')
+        print('\nA*B')
         muestraMatriz(C)
-        print()
-
-        print('\nA-B')
-        muestraMatriz(D)
         print()
