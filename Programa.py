@@ -15,61 +15,50 @@ def muestraLista(L):
     for i in range(n):
         print(f'[{i}] = {L[i]}')
 
-def buscaDato(L, dato):
-    n = len(L)
-    posDato = None
-    for i in range(n):
-        if dato == L[i]:
-            posDato = i
-            break
-    return posDato
-
-def cuentaDato(L, dato):
-    veces = 0
-    n = len(L)
-    for i in range(n):
-        if dato == L[i]:
-            veces += 1
-    return veces
-
-def acumulaDatos(L):
-    n=len(L)
-    s = 0
-    for i in range(n):
-        s = s + L[i]
-    return s
-
-def promediaDatos(L):
-    if len(L)!=0:
-        return acumulaDatos(L)/len(L)
+def suma(L1, L2):
+    if len(L1)==len(L2):
+        n = len(L1)
+        return [L1[i]+L2[i] for i in range(n)]
     else:
-        return None
+        return []
+
+def resta(L1, L2):
+    if len(L1)==len(L2):
+        n = len(L1)
+        return [L1[i]-L2[i] for i in range(n)]
+    else:
+        return []
 
 if __name__ == '__main__':
     system('cls')
 
-    n = int(input('Cuántos datos? '))
+    print('Para A')
+    nA = int(input('Cuántos datos? '))
 
-    L = generaListaRandrage(n, 0, 10)
-    print()
-    muestraLista(L)
+    print('Para B')
+    nB = int(input('Cuántos datos? '))
 
-    dato = int(input('¿Qué dato buscas? '))
-    posDato = buscaDato(L,dato)
-    if posDato!=None:
-        print(f'{dato} está en la posición {posDato}')
+    if nA!=nB:
+        print('Error! no pueden sumarse ni restarse...')
     else:
-        print(f'{dato} NO está en la lista')
-    print()
+        A = generaListaRandrage(nA, 0, 10)
+        B = generaListaRandrage(nA, 0, 10)
+        
+        C = suma(A, B)
+        D = resta(A, B)
 
-    veces = cuentaDato(L,dato)
-    print(f'{dato} está {veces} veces')
-    print()
+        print('A')
+        muestraLista(A)
+        print()
 
-    s = acumulaDatos(L)
-    print(f'Los datos en L acumulan {s}')
-    print()
+        print('B')
+        muestraLista(B)
+        print()
 
-    p = promediaDatos(L)
-    print(f'Los datos en L promedian {p}')
-    print()
+        print('A+B')
+        muestraLista(C)
+        print()
+
+        print('A-B')
+        muestraLista(D)
+        print()
