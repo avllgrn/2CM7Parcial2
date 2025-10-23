@@ -1,64 +1,29 @@
 from os import system
 from random import randrange
 
-def generaListaRandrage(n, ini, fin):
-    if ini>fin:
-        aux = ini
-        ini=fin
-        fin=aux
+def generaCalificacionesRandrange(n):
+    return [randrange(0, 101)/10 for i in range(n)]
 
-    lista = [randrange(ini, fin) for i in range(n)]
-    return lista
+def calculaPromedios(P1, P2, P3):
+    return [(P1[i]+P2[i]+P3[i]) / 3 for i in range(n)]
 
-def muestraLista(L):
-    n = len(L)
+def muestraCalificaciones(P1, P2, P3, Prom):
+    n = len(P1)
+    print('\nAlumno\t| P1\t| P2\t| P3\tProm\n')
+
     for i in range(n):
-        print(f'[{i}] = {L[i]}')
-
-def suma(L1, L2):
-    if len(L1)==len(L2):
-        n = len(L1)
-        return [L1[i]+L2[i] for i in range(n)]
-    else:
-        return []
-
-def resta(L1, L2):
-    if len(L1)==len(L2):
-        n = len(L1)
-        return [L1[i]-L2[i] for i in range(n)]
-    else:
-        return []
+        print(f'{i+1}\t|{P1[i]}\t|{P2[i]}\t|{P3[i]}\t|{Prom[i]}')
+    print()
 
 if __name__ == '__main__':
     system('cls')
 
-    print('Para A')
-    nA = int(input('Cuántos datos? '))
+    n = int(input('Cuántos alumnos? '))
 
-    print('Para B')
-    nB = int(input('Cuántos datos? '))
+    Parcial1 = generaCalificacionesRandrange(n)
+    Parcial2 = generaCalificacionesRandrange(n)
+    Parcial3 = generaCalificacionesRandrange(n)
+    
+    Promedio = calculaPromedios(Parcial1, Parcial2, Parcial3)
 
-    if nA!=nB:
-        print('Error! no pueden sumarse ni restarse...')
-    else:
-        A = generaListaRandrage(nA, 0, 10)
-        B = generaListaRandrage(nA, 0, 10)
-        
-        C = suma(A, B)
-        D = resta(A, B)
-
-        print('A')
-        muestraLista(A)
-        print()
-
-        print('B')
-        muestraLista(B)
-        print()
-
-        print('A+B')
-        muestraLista(C)
-        print()
-
-        print('A-B')
-        muestraLista(D)
-        print()
+    muestraCalificaciones(Parcial1, Parcial2, Parcial3, Promedio)
