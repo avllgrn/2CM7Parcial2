@@ -1,29 +1,44 @@
 from os import system
 from random import randrange
 
-def generaCalificacionesRandrange(n):
-    return [randrange(0, 101)/10 for i in range(n)]
-
-def calculaPromedios(P1, P2, P3):
-    return [(P1[i]+P2[i]+P3[i]) / 3 for i in range(n)]
-
-def muestraCalificaciones(P1, P2, P3, Prom):
-    n = len(P1)
-    print('\nAlumno\t| P1\t| P2\t| P3\tProm\n')
-
+def muestraLista(Original):
     for i in range(n):
-        print(f'{i+1}\t|{P1[i]}\t|{P2[i]}\t|{P3[i]}\t|{Prom[i]}')
-    print()
+        print(f'[{i}] = {Original[i]}')
+
+def intercambia(L, i, j):
+    aux = L[j]
+    L[j] =L[i]
+    L[i] = aux
+
+def burbuja(L):
+    n = len(L)
+    conteo=0
+    for i in range(n-1):
+        # print(f'Intento #{i+1}')
+        for j in range(n-1):
+            conteo += 1
+            # muestraLista(L)
+            # print(f'Se compara L[{j+1}]={L[j+1]} con L[{j}]={L[j]}')
+            if L[j+1] < L[j]:
+                # print(f'Se intercambian, porque L[{j+1}]={L[j+1]} < L[{j}]={L[j]}')
+                intercambia(L, j, j+1)
+            # print()
+
+    # print(f'posibles intercambios: {conteo}')
+    # print(f'\nDespués de intentar intercambiar elementos {n-1} veces:')
 
 if __name__ == '__main__':
     system('cls')
 
-    n = int(input('Cuántos alumnos? '))
+    n = int(input('¿Cuántos datos? '))
+    L = [randrange(100) for i in range(n)]
 
-    Parcial1 = generaCalificacionesRandrange(n)
-    Parcial2 = generaCalificacionesRandrange(n)
-    Parcial3 = generaCalificacionesRandrange(n)
-    
-    Promedio = calculaPromedios(Parcial1, Parcial2, Parcial3)
+    print('Lista inicial')
+    muestraLista(L)
+    print()
 
-    muestraCalificaciones(Parcial1, Parcial2, Parcial3, Promedio)
+    burbuja(L)
+
+    print('Lista final')
+    muestraLista(L)
+    print()
